@@ -84,27 +84,29 @@ flowchart TD
     BT -.-> OPS
     BT --> End(["Complete"])
     
-    style WD fill:#90EE90,stroke:#2d5016,stroke-width:3px
-    style RA fill:#90EE90,stroke:#2d5016,stroke-width:3px
-    style WP fill:#90EE90,stroke:#2d5016,stroke-width:3px
+    style WD fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
+    style RA fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
+    style WP fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
 
-    style CG fill:#90EE90,stroke:#2d5016,stroke-width:3px
-    style BT fill:#90EE90,stroke:#2d5016,stroke-width:3px
-    style OPS fill:#f0f0f0,stroke:#999999,stroke-width:2px,stroke-dasharray: 5 5
-    style RE fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5
-    style Stories fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5
-    style AppDesign fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5
+    style CG fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
+    style BT fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
+    style OPS fill:#BDBDBD,stroke:#424242,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+    style RE fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
+    style Stories fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
+    style AppDesign fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
 
-    style UnitsG fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5
-    style FD fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5
-    style NFRA fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5
-    style NFRD fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5
-    style ID fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5
-    style INCEPTION fill:#E3F2FD,stroke:#1976D2,stroke-width:3px
-    style CONSTRUCTION fill:#E8F5E9,stroke:#388E3C,stroke-width:3px
-    style OPERATIONS fill:#FFF9C4,stroke:#F57C00,stroke-width:3px
-    style Start fill:#E6E6FA,stroke:#4B0082,stroke-width:2px
-    style End fill:#E6E6FA,stroke:#4B0082,stroke-width:2px
+    style UnitsG fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
+    style FD fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
+    style NFRA fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
+    style NFRD fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
+    style ID fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000
+    style INCEPTION fill:#BBDEFB,stroke:#1565C0,stroke-width:3px
+    style CONSTRUCTION fill:#C8E6C9,stroke:#2E7D32,stroke-width:3px
+    style OPERATIONS fill:#FFF59D,stroke:#F57F17,stroke-width:3px
+    style Start fill:#CE93D8,stroke:#6A1B9A,stroke-width:3px,color:#000
+    style End fill:#CE93D8,stroke:#6A1B9A,stroke-width:3px,color:#000
+    
+    linkStyle default stroke:#333,stroke-width:2px
 ```
 
 **Stage Descriptions:**

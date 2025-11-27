@@ -202,20 +202,23 @@ Create Mermaid flowchart showing:
 
 **Styling rules** (add after flowchart):
 ```
-style WD fill:#90EE90,stroke:#2d5016,stroke-width:3px
-style CP fill:#90EE90,stroke:#2d5016,stroke-width:3px
-style CG fill:#90EE90,stroke:#2d5016,stroke-width:3px
-style BT fill:#90EE90,stroke:#2d5016,stroke-width:3px
-style US fill:#f0f0f0,stroke:#999999,stroke-width:2px,stroke-dasharray: 5 5
-style Start fill:#E6E6FA,stroke:#4B0082,stroke-width:2px
-style End fill:#E6E6FA,stroke:#4B0082,stroke-width:2px
+style WD fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
+style CP fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
+style CG fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
+style BT fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff
+style US fill:#BDBDBD,stroke:#424242,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+style Start fill:#CE93D8,stroke:#6A1B9A,stroke-width:3px,color:#000
+style End fill:#CE93D8,stroke:#6A1B9A,stroke-width:3px,color:#000
+
+linkStyle default stroke:#333,stroke-width:2px
 ```
 
 **Style Guidelines**:
-- Completed/Always execute: `fill:#90EE90,stroke:#2d5016,stroke-width:3px`
-- Conditional EXECUTE: `fill:#FFE4B5,stroke:#8B7355,stroke-width:2px,stroke-dasharray: 5 5`
-- Conditional SKIP: `fill:#f0f0f0,stroke:#999999,stroke-width:2px,stroke-dasharray: 5 5`
-- Start/End: `fill:#E6E6FA,stroke:#4B0082,stroke-width:2px`
+- Completed/Always execute: `fill:#4CAF50,stroke:#1B5E20,stroke-width:3px,color:#fff` (Material Green with white text)
+- Conditional EXECUTE: `fill:#FFA726,stroke:#E65100,stroke-width:3px,stroke-dasharray: 5 5,color:#000` (Material Orange with black text)
+- Conditional SKIP: `fill:#BDBDBD,stroke:#424242,stroke-width:2px,stroke-dasharray: 5 5,color:#000` (Material Gray with black text)
+- Start/End: `fill:#CE93D8,stroke:#6A1B9A,stroke-width:3px,color:#000` (Material Purple with black text)
+- Phase containers: Use lighter Material colors (INCEPTION: #BBDEFB, CONSTRUCTION: #C8E6C9, OPERATIONS: #FFF59D)
 
 ## Step 7: Create Execution Plan Document
 

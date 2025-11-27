@@ -62,6 +62,7 @@ The AI model intelligently assesses what stages are needed based on:
 - Workflow Planning (ALWAYS)
 - Application Design (CONDITIONAL)
 - Units Generation (CONDITIONAL)
+- Cross-Unit Design (CONDITIONAL)
 
 ---
 
@@ -256,6 +257,28 @@ The AI model intelligently assesses what stages are needed based on:
 5. **Wait for Explicit Approval**: Present detailed completion message (see units-generation.md for message format) - DO NOT PROCEED until user confirms
 6. **MANDATORY**: Log user's response in audit.md with complete raw input
 
+## Cross-Unit Design (CONDITIONAL)
+
+**Execute IF**:
+- Multiple units exist (from Units Generation)
+- Units have dependencies between them
+- System needs integration patterns defined
+- Complex inter-unit communication required
+
+**Skip IF**:
+- Single unit system
+- No inter-unit dependencies
+- Simple monolith architecture
+- All units are completely independent
+
+**Execution**:
+1. **MANDATORY**: Log any user input during this phase in audit.md
+2. Load all steps from `inception/cross-unit-design.md`
+3. Load unit definitions and dependencies from Units Generation
+4. Execute cross-unit design planning and options generation
+5. **Wait for Explicit Approval**: Present integration options and wait for user selection - DO NOT PROCEED until user selects approach
+6. **MANDATORY**: Log user's response in audit.md with complete raw input
+
 ---
 
 # 🟢 CONSTRUCTION PHASE
@@ -265,21 +288,43 @@ The AI model intelligently assesses what stages are needed based on:
 **Focus**: Determine HOW to build it
 
 **Stages in CONSTRUCTION PHASE**:
-- Per-Unit Loop (executes for each unit):
+- Unit Selection (CONDITIONAL - only if multiple units exist)
+- Per-Selected-Unit Processing:
   - Functional Design (CONDITIONAL, per-unit)
   - NFR Requirements (CONDITIONAL, per-unit)
   - NFR Design (CONDITIONAL, per-unit)
   - Infrastructure Design (CONDITIONAL, per-unit)
   - Code Generation (ALWAYS, per-unit)
-- Build and Test (ALWAYS - after all units complete)
+- Build and Test (ALWAYS - after selected unit complete)
 
-**Note**: Each unit is completed fully (design + code) before moving to the next unit.
+**Note**: Teams select which unit to work on and complete it fully before other teams work on other units.
 
 ---
 
-## Per-Unit Loop (Executes for Each Unit)
+## Unit Selection (CONDITIONAL)
 
-**For each unit of work, execute the following stages in sequence:**
+**Execute IF**:
+- Multiple units exist (from Units Generation)
+- System was decomposed into multiple units of work
+
+**Skip IF**:
+- Single unit system
+- No Units Generation executed
+- Monolith architecture
+- Simple single-component system
+
+**Execution**:
+1. **MANDATORY**: Log unit selection in audit.md
+2. Load unit definitions from `inception/application-design/unit-of-work.md`
+3. Present unit selection question: "Which unit of work do you want to work on?"
+4. Show available units with their dependencies and current status
+5. Wait for user selection
+6. **MANDATORY**: Log user's selection in audit.md with complete raw input
+7. Proceed with selected unit through per-unit stages
+
+## Per-Selected-Unit Processing
+
+**For the selected unit of work, execute the following stages in sequence:**
 
 ### Functional Design (CONDITIONAL, per-unit)
 
@@ -485,7 +530,8 @@ aidlc-docs/
 │   │   ├── workspace-detection.md
 │   │   ├── workflow-planning.md
 │   │   ├── story-generation-plan.md
-│   │   └── unit-of-work-plan.md
+│   │   ├── unit-of-work-plan.md
+│   │   └── cross-unit-design-plan.md
 │   ├── reverse-engineering/        # Brownfield only
 │   │   ├── architecture.md
 │   │   ├── code-structure.md
@@ -501,15 +547,21 @@ aidlc-docs/
 │   ├── user-stories/
 │   │   ├── stories.md
 │   │   └── personas.md
-│   └── application-design/
-│       ├── components.md
-│       ├── component-methods.md
-│       ├── services.md
-│       ├── component-dependency.md
-│       ├── unit-of-work.md
-│       ├── unit-of-work-dependency.md
-│       └── unit-of-work-story-map.md
+│   ├── application-design/
+│   │   ├── components.md
+│   │   ├── component-methods.md
+│   │   ├── services.md
+│   │   ├── component-dependency.md
+│   │   ├── unit-of-work.md
+│   │   ├── unit-of-work-dependency.md
+│   │   └── unit-of-work-story-map.md
+│   └── cross-unit-design/
+│       ├── contracts.md
+│       └── integration-patterns.md
 ├── construction/               # 🟢 CONSTRUCTION PHASE artifacts
+│   ├── shared-contracts/
+│   │   ├── {unit-name}-contracts.md
+│   │   └── messaging-contracts.md
 │   ├── plans/
 │   │   ├── {unit-name}-functional-design-plan.md
 │   │   ├── {unit-name}-nfr-requirements-plan.md

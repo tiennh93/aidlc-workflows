@@ -15,13 +15,41 @@ This stage generates code for each unit of work through two integrated parts:
 
 # PART 1: PLANNING
 
-## Step 1: Analyze Unit Context
+## Step 1: Check Dependencies
+- [ ] Read unit definition from `aidlc-docs/inception/application-design/unit-of-work.md`
+- [ ] Read unit dependencies from `aidlc-docs/inception/application-design/unit-of-work-dependency.md`
+- [ ] Check `aidlc-docs/construction/shared-contracts/` for required contracts
+- [ ] Check `aidlc-docs/construction/shared-infrastructure/` for shared infrastructure definitions
+- [ ] **IF missing dependencies**: Ask dependency question with smart suggestions
+
+**Dependency Question Format**:
+```markdown
+"Unit [A] depends on [dependency description] from Unit [B].
+
+**AI-DLC Suggestion**: [Smart suggestion based on dependency type]
+
+How should Unit [A] proceed:
+A) Wait for Unit [B] to publish complete contract (RECOMMENDED for [reason])
+B) Go discuss with Unit [B] team to get preliminary contract
+C) Proceed with assumptions and reconcile later
+D) Other (describe approach)
+
+[Answer]: 
+```
+
+**Smart Suggestions**:
+- **API contracts** → "Critical for code generation - recommend coordination"
+- **Message schemas** → "Critical for code generation - recommend coordination"
+- **Database schemas** → "Can proceed with adapter pattern and migrate later"
+- **Simple integrations** → "Can proceed with mock/stub interfaces"
+
+## Step 2: Analyze Unit Context
 - [ ] Read unit design artifacts from Unit Design Generation
 - [ ] Read unit story map to understand assigned stories
 - [ ] Identify unit dependencies and interfaces
 - [ ] Validate unit is ready for code generation
 
-## Step 2: Create Detailed Unit Code Generation Plan
+## Step 3: Create Detailed Unit Code Generation Plan
 - [ ] Create explicit steps for unit generation:
   - Business Logic Generation
   - Business Logic Unit Testing
@@ -39,7 +67,7 @@ This stage generates code for each unit of work through two integrated parts:
 - [ ] Include story mapping references for this unit
 - [ ] Add checkboxes [ ] for each step
 
-## Step 3: Include Unit Generation Context
+## Step 4: Include Unit Generation Context
 - [ ] For this unit, include:
   - Stories implemented by this unit
   - Dependencies on other units/services
@@ -47,7 +75,7 @@ This stage generates code for each unit of work through two integrated parts:
   - Database entities owned by this unit
   - Service boundaries and responsibilities
 
-## Step 4: Create Unit Plan Document
+## Step 5: Create Unit Plan Document
 - [ ] Save complete plan as `aidlc-docs/construction/plans/{unit-name}-code-generation-plan.md`
 - [ ] Include step numbering (Step 1, Step 2, etc.)
 - [ ] Include unit context and dependencies
@@ -55,28 +83,28 @@ This stage generates code for each unit of work through two integrated parts:
 - [ ] Ensure plan is executable step-by-step
 - [ ] Emphasize that this plan is the single source of truth for Code Generation
 
-## Step 5: Summarize Unit Plan
+## Step 6: Summarize Unit Plan
 - [ ] Provide summary of the unit code generation plan to the user
 - [ ] Highlight unit generation approach
 - [ ] Explain step sequence and story coverage
 - [ ] Note total number of steps and estimated scope
 
-## Step 6: Log Approval Prompt
+## Step 7: Log Approval Prompt
 - [ ] Before asking for approval, log the prompt with timestamp in `aidlc-docs/audit.md`
 - [ ] Include reference to the complete unit code generation plan
 - [ ] Use ISO 8601 timestamp format
 
-## Step 7: Wait for Explicit Approval
+## Step 8: Wait for Explicit Approval
 - [ ] Do not proceed until the user explicitly approves the unit code generation plan
 - [ ] Approval must cover the entire plan and generation sequence
 - [ ] If user requests changes, update the plan and repeat approval process
 
-## Step 8: Record Approval Response
+## Step 9: Record Approval Response
 - [ ] Log the user's approval response with timestamp in `aidlc-docs/audit.md`
 - [ ] Include the exact user response text
 - [ ] Mark the approval status clearly
 
-## Step 9: Update Progress
+## Step 10: Update Progress
 - [ ] Mark Code Planning complete in `aidlc-state.md`
 - [ ] Update the "Current Status" section
 - [ ] Prepare for transition to Code Generation
@@ -85,28 +113,28 @@ This stage generates code for each unit of work through two integrated parts:
 
 # PART 2: GENERATION
 
-## Step 10: Load Unit Code Generation Plan
+## Step 11: Load Unit Code Generation Plan
 - [ ] Read the complete plan from `aidlc-docs/construction/plans/{unit-name}-code-generation-plan.md`
 - [ ] Identify the next uncompleted step (first [ ] checkbox)
 - [ ] Load the context for that step (unit, dependencies, stories)
 
-## Step 11: Execute Current Step
+## Step 12: Execute Current Step
 - [ ] Perform exactly what the current step describes
 - [ ] Generate code, tests, or documentation as specified
 - [ ] Follow the unit's story requirements
 - [ ] Respect dependencies and interfaces defined in the plan
 
-## Step 12: Update Progress
+## Step 13: Update Progress
 - [ ] Mark the completed step as [x] in the unit code generation plan
 - [ ] Mark associated unit stories as [x] when their generation is finished
 - [ ] Update `aidlc-docs/aidlc-state.md` current status
 - [ ] Save all generated artifacts
 
-## Step 13: Continue or Complete Generation
+## Step 14: Continue or Complete Generation
 - [ ] If more steps remain, return to Step 10
 - [ ] If all steps complete, proceed to present completion message
 
-## Step 14: Present Completion Message
+## Step 15: Present Completion Message
 - Present completion message in this structure:
      1. **Completion Announcement** (mandatory): Always start with this:
 
@@ -139,12 +167,12 @@ This stage generates code for each unit of work through two integrated parts:
 ---
 ```
 
-## Step 15: Wait for Explicit Approval
+## Step 16: Wait for Explicit Approval
 - Do not proceed until the user explicitly approves the generated code
 - Approval must be clear and unambiguous
 - If user requests changes, update the code and repeat the approval process
 
-## Step 16: Record Approval and Update Progress
+## Step 17: Record Approval and Update Progress
 - Log approval in audit.md with timestamp
 - Record the user's approval response with timestamp
 - Mark Code Generation stage as complete for this unit in aidlc-state.md

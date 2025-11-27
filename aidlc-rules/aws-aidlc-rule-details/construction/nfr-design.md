@@ -10,16 +10,44 @@ Incorporate NFR requirements into unit design using patterns and logical compone
 
 ## Steps to Execute
 
-### Step 1: Analyze NFR Requirements
+### Step 1: Check Dependencies
+- Read unit definition from `aidlc-docs/inception/application-design/unit-of-work.md`
+- Read unit dependencies from `aidlc-docs/inception/application-design/unit-of-work-dependency.md`
+- Check `aidlc-docs/construction/shared-contracts/` for required contracts
+- Check `aidlc-docs/construction/shared-infrastructure/` for shared infrastructure definitions
+- **IF missing dependencies**: Ask dependency question with smart suggestions
+
+**Dependency Question Format**:
+```markdown
+"Unit [A] depends on [dependency description] from Unit [B].
+
+**AI-DLC Suggestion**: [Smart suggestion based on dependency type]
+
+How should Unit [A] proceed:
+A) Wait for Unit [B] to publish complete contract (RECOMMENDED for [reason])
+B) Go discuss with Unit [B] team to get preliminary contract
+C) Proceed with assumptions and reconcile later
+D) Other (describe approach)
+
+[Answer]: 
+```
+
+**Smart Suggestions**:
+- **Performance/latency requirements** → "Cross-unit performance impacts - recommend coordination"
+- **Scalability patterns** → "Can proceed with unit-level patterns and adapter layer"
+- **Security patterns** → "Critical dependency - recommend coordination"
+- **Resilience patterns** → "Can proceed with circuit breaker/adapter patterns"
+
+### Step 2: Analyze NFR Requirements
 - Read NFR requirements from `aidlc-docs/construction/{unit-name}/nfr-requirements/`
 - Understand scalability, performance, availability, security needs
 
-### Step 2: Create NFR Design Plan
+### Step 3: Create NFR Design Plan
 - Generate plan with checkboxes [] for NFR design
 - Focus on design patterns and logical components
 - Each step should have a checkbox []
 
-### Step 3: Generate Context-Appropriate Questions
+### Step 4: Generate Context-Appropriate Questions
 **DIRECTIVE**: Analyze the NFR requirements to generate ONLY questions relevant to THIS specific unit's NFR design. Use the categories below as inspiration, NOT as a mandatory checklist. Skip entire categories if not applicable.
 
 - EMBED questions using [Answer]: tag format
@@ -33,20 +61,20 @@ Incorporate NFR requirements into unit design using patterns and logical compone
 - **Security Patterns** - Only if security implementation approach needs input
 - **Logical Components** - Only if infrastructure components (queues, caches, etc.) need clarification
 
-### Step 4: Store Plan
+### Step 5: Store Plan
 - Save as `aidlc-docs/construction/plans/{unit-name}-nfr-design-plan.md`
 - Include all [Answer]: tags for user input
 
-### Step 5: Collect and Analyze Answers
+### Step 6: Collect and Analyze Answers
 - Wait for user to complete all [Answer]: tags
 - Review for vague or ambiguous responses
 - Add follow-up questions if needed
 
-### Step 6: Generate NFR Design Artifacts
+### Step 7: Generate NFR Design Artifacts
 - Create `aidlc-docs/construction/{unit-name}/nfr-design/nfr-design-patterns.md`
 - Create `aidlc-docs/construction/{unit-name}/nfr-design/logical-components.md`
 
-### Step 7: Present Completion Message
+### Step 8: Present Completion Message
 - Present completion message in this structure:
      1. **Completion Announcement** (mandatory): Always start with this:
 
@@ -79,12 +107,12 @@ Incorporate NFR requirements into unit design using patterns and logical compone
 ---
 ```
 
-### Step 8: Wait for Explicit Approval
+### Step 9: Wait for Explicit Approval
 - Do not proceed until the user explicitly approves the NFR design
 - Approval must be clear and unambiguous
 - If user requests changes, update the design and repeat the approval process
 
-### Step 9: Record Approval and Update Progress
+### Step 10: Record Approval and Update Progress
 - Log approval in audit.md with timestamp
 - Record the user's approval response with timestamp
 - Mark NFR Design stage complete in aidlc-state.md

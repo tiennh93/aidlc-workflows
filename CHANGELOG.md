@@ -1,6 +1,17 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [0.0.6] - 2026-01-07
+
+
+### Documentation
+
+- update changelog for v0.0.5
+
+
+### Features
+
+- add leo file
 ## [0.0.2] - 2026-01-07
 
 

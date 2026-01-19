@@ -3,12 +3,9 @@
 # This workflow handles versioning and distribution of the AI-DLC methodology.
 # It triggers when you push a version tag and:
 #
-#   1. Transforms the source of truth (aidlc-rule-details/) into Agent Skills format
-#   2. Injects the version number into SKILL.md metadata
-#   3. Creates distribution artifacts:
-#      - ai-dlc-skills-vX.X.X.zip (Agent Skills format for Claude, Cursor, Windsurf, etc.)
-#      - ai-dlc-rules-vX.X.X.zip (Raw rules format for Amazon Q, Kiro, etc.)
-#   4. Publishes a GitHub Release with artifacts attached
+#   1. Creates distribution artifact:
+#      - ai-dlc-rules-vX.X.X.zip (Rules format for Amazon Q, Kiro, etc.)
+#   2. Publishes a GitHub Release with artifact attached
 #
 # Note: Changelog is generated separately by changelog.yml after release is published.
 #
@@ -44,15 +41,9 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
-      - name: Generate Agent Skills format
-        run: |
-          chmod +x scripts/generate-skills.sh
-          ./scripts/generate-skills.sh "${{ steps.version.outputs.version }}"
-
-      - name: Create release artifacts
+      - name: Create release artifact
         run: |
           VERSION="${{ steps.version.outputs.version }}"
-          cd dist && zip -r "../ai-dlc-skills-v${VERSION}.zip" skills/ && cd ..
           zip -r "ai-dlc-rules-v${VERSION}.zip" aidlc-rules/
 
       - name: Create GitHub Release
@@ -65,10 +56,8 @@ jobs:
             See [CHANGELOG.md](CHANGELOG.md) for details.
             
             ## Downloads
-            - **ai-dlc-skills** - Agent Skills format (Claude, Cursor, Windsurf, etc.)
-            - **ai-dlc-rules** - Raw rules format (Amazon Q, Kiro, etc.)
+            - **ai-dlc-rules** - Rules format (Amazon Q, Kiro, etc.)
           files: |
-            ai-dlc-skills-v${{ steps.version.outputs.version }}.zip
             ai-dlc-rules-v${{ steps.version.outputs.version }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

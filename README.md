@@ -117,7 +117,7 @@ These are our core principles to guide our decision making.
 
 - **No duplication**. The source of truth lives in one place. If we add support for new tools or formats that require specific files, we generate them from the source rather than maintaining separate copies.
 
-- **No CLI**. AI-DLC is a methodology, not a tool. We don't ship CLIs or require users to install anything. The methodology works with whatever tooling the user already has.
+- **Methodology first**. AI-DLC is fundamentally a methodology, not a tool. Users shouldn't need to install anything to get started. That said, we're open to convenience tooling (scripts, CLIs) down the road if it helps users adopt or extend the methodology.
 
 - **Reproducible**. Rules should be clear enough that different models produce similar outcomes. We know models behave differently, but the methodology should minimize variance through explicit guidance.
 

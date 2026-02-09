@@ -1,6 +1,6 @@
-# Phân tích Yêu cầu (Thích ứng)
+# Phân tích Yêu cầu (Thích ứng) - Requirements Analysis (Adaptive)
 
-**Đóng vai trò** của một Product Owner
+**Đóng vai** chủ sở hữu sản phẩm (product owner)
 
 **Giai đoạn Thích ứng**: Luôn thực thi. Mức độ chi tiết thích ứng với độ phức tạp của vấn đề.
 
@@ -8,52 +8,52 @@
 
 ## Điều kiện Tiên quyết
 
-- Phát hiện Workspace phải hoàn thành
-- Kỹ thuật Đảo ngược phải hoàn thành (nếu là brownfield)
+- Phát hiện Workspace phải hoàn tất
+- Kỹ thuật Đảo ngược phải hoàn tất (nếu brownfield)
 
-## Các bước Thực hiện
+## Các Bước Thực thi
 
-### Bước 1: Tải Ngữ cảnh Kỹ thuật Đảo ngược (nếu có)
+### Bước 1: Tải Ngữ cảnh Kỹ thuật Đảo ngược (nếu có sẵn)
 
 **NẾU dự án brownfield**:
 
 - Tải `aidlc-docs/inception/reverse-engineering/architecture.md`
 - Tải `aidlc-docs/inception/reverse-engineering/component-inventory.md`
 - Tải `aidlc-docs/inception/reverse-engineering/technology-stack.md`
-- Sử dụng các thông tin này để hiểu hệ thống hiện có khi phân tích yêu cầu
+- Sử dụng những thứ này để hiểu hệ thống hiện có khi phân tích yêu cầu
 
 ### Bước 2: Phân tích Yêu cầu Người dùng (Phân tích Ý định)
 
 #### 2.1 Sự rõ ràng của Yêu cầu
 
-- **Rõ ràng**: Cụ thể, định nghĩa tốt, có thể hành động
+- **Rõ ràng**: Cụ thể, được xác định rõ, có thể hành động
 - **Mơ hồ**: Chung chung, không rõ ràng, cần làm rõ
-- **Không đầy đủ**: Thiếu thông tin quan trọng
+- **Không đầy đủ**: Thiếu thông tin chính
 
 #### 2.2 Loại Yêu cầu
 
 - **Tính năng Mới**: Thêm chức năng mới
-- **Sửa lỗi**: Khắc phục vấn đề hiện có
+- **Sửa lỗi**: Sửa vấn đề hiện có
 - **Refactoring**: Cải thiện cấu trúc mã
-- **Nâng cấp**: Cập nhật các phụ thuộc hoặc framework
-- **Di chuyển (Migration)**: Chuyển sang công nghệ khác
+- **Nâng cấp**: Cập nhật các phụ thuộc hoặc frameworks
+- **Di chuyển**: Chuyển sang công nghệ khác
 - **Cải tiến**: Cải thiện tính năng hiện có
 - **Dự án Mới**: Bắt đầu từ đầu
 
 #### 2.3 Ước tính Phạm vi Ban đầu
 
-- **Tệp Đơn lẻ**: Thay đổi một tệp
-- **Thành phần Đơn lẻ**: Thay đổi một thành phần/gói
+- **Tệp Đơn**: Thay đổi đối với một tệp
+- **Thành phần Đơn**: Thay đổi đối với một thành phần/gói
 - **Nhiều Thành phần**: Thay đổi trên nhiều thành phần
-- **Toàn hệ thống**: Thay đổi ảnh hưởng toàn bộ hệ thống
-- **Liên hệ thống**: Thay đổi ảnh hưởng nhiều hệ thống
+- **Toàn hệ thống**: Thay đổi ảnh hưởng đến toàn bộ hệ thống
+- **Liên hệ thống**: Thay đổi ảnh hưởng đến nhiều hệ thống
 
 #### 2.4 Ước tính Độ phức tạp Ban đầu
 
-- **Nhỏ nhặt (Trivial)**: Thay đổi đơn giản, thẳng thắn
-- **Đơn giản**: Đường dẫn triển khai rõ ràng
-- **Vừa phải**: Một số phức tạp, nhiều cân nhắc
-- **Phức tạp**: Phức tạp đáng kể, nhiều cân nhắc
+- **Tầm thường**: Thay đổi đơn giản, thẳng thắn
+- **Đơn giản**: Đường dẫn thực hiện rõ ràng
+- **Trung bình**: Một số phức tạp, nhiều cân nhắc
+- **Phức tạp**: Độ phức tạp đáng kể, nhiều cân nhắc
 
 ### Bước 3: Xác định Độ sâu Yêu cầu
 
@@ -63,7 +63,7 @@
 
 - Yêu cầu rõ ràng và đơn giản
 - Không cần yêu cầu chi tiết
-- Chỉ ghi lại sự hiểu biết cơ bản
+- Chỉ cần ghi lại sự hiểu biết cơ bản
 
 **Độ sâu Tiêu chuẩn** - Sử dụng khi:
 
@@ -81,42 +81,48 @@
 
 Phân tích bất cứ điều gì người dùng đã cung cấp:
 
-- Các tuyên bố ý định hoặc mô tả (đã được ghi trong audit.md)
-- Các tài liệu yêu cầu hiện có (tìm kiếm trong workspace nếu được đề cập)
-- Nội dung dán vào hoặc tham chiếu tệp
+- Các tuyên bố ý định hoặc mô tả (đã đăng nhập trong audit.md)
+- Các tài liệu yêu cầu hiện có (tìm kiếm workspace nếu được đề cập)
+- Nội dung dán hoặc tham chiếu tệp
 - Chuyển đổi bất kỳ tài liệu không phải markdown nào sang định dạng markdown
 
 ### Bước 5: Phân tích Tính đầy đủ Kỹ lưỡng
 
 **QUAN TRỌNG**: Sử dụng phân tích toàn diện để đánh giá tính đầy đủ của yêu cầu. Mặc định đặt câu hỏi khi có BẤT KỲ sự mơ hồ hoặc thiếu chi tiết nào.
 
-**BẮT BUỘC**: Đánh giá TẤT CẢ các lĩnh vực này và đặt câu hỏi cho BẤT KỲ điều gì không rõ ràng:
+**BẮT BUỘC**: Đánh giá TẤT CẢ các lĩnh vực này và đặt câu hỏi cho BẤT KỲ lĩnh vực nào không rõ ràng:
 
 - **Yêu cầu Chức năng**: Các tính năng cốt lõi, tương tác người dùng, hành vi hệ thống
-- **Yêu cầu Phi chức năng**: Hiệu năng, bảo mật, khả năng mở rộng, khả năng sử dụng
+- **Yêu cầu Phi Chức năng**: Hiệu năng, bảo mật, khả năng mở rộng, khả năng sử dụng
 - **Kịch bản Người dùng**: Use cases, hành trình người dùng, trường hợp biên, kịch bản lỗi
 - **Ngữ cảnh Kinh doanh**: Mục tiêu, ràng buộc, tiêu chí thành công, nhu cầu của các bên liên quan
-- **Ngữ cảnh Kỹ thuật**: Các điểm tích hợp, yêu cầu dữ liệu, ranh giới hệ thống
+- **Ngữ cảnh Kỹ thuật**: Điểm tích hợp, yêu cầu dữ liệu, ranh giới hệ thống
 - **Thuộc tính Chất lượng**: Độ tin cậy, khả năng bảo trì, khả năng kiểm thử, khả năng truy cập
 
 **Khi nghi ngờ, hãy đặt câu hỏi** - yêu cầu không đầy đủ dẫn đến việc triển khai kém.
 
 ### Bước 6: Tạo Câu hỏi Làm rõ (CÁCH TIẾP CẬN CHỦ ĐỘNG)
 
-- **LUÔN LUÔN** tạo `aidlc-docs/inception/requirements/requirement-verification-questions.md` trừ khi yêu cầu đặc biệt rõ ràng và đầy đủ
-- Đặt câu hỏi về BẤT KỲ lĩnh vực nào còn thiếu, không rõ ràng hoặc mơ hồ
+- **LUÔN LUÔN** tạo `aidlc-docs/inception/requirements/requirement-verification-questions.md` trừ khi các yêu cầu đặc biệt rõ ràng và đầy đủ
+- Đặt câu hỏi về BẤT KỲ lĩnh vực nào thiếu, không rõ ràng hoặc mơ hồ
 - Tập trung vào yêu cầu chức năng, yêu cầu phi chức năng, kịch bản người dùng và ngữ cảnh kinh doanh
 - Yêu cầu người dùng điền vào tất cả các thẻ [Answer]: trực tiếp trong tài liệu câu hỏi
-- Nếu trình bày các lựa chọn trắc nghiệm cho câu trả lời:
-  - Gắn nhãn các tùy chọn là A, B, C, D v.v.
-  - Đảm bảo các tùy chọn loại trừ lẫn nhau và không chồng chéo
-  - LUÔN bao gồm tùy chọn cho phản hồi tùy chỉnh: "X) Khác (vui lòng mô tả sau thẻ [Answer]: bên dưới)"
+- Nếu trình bày các tùy chọn trắc nghiệm cho câu trả lời:
+  - Dán nhãn các tùy chọn là A, B, C, D v.v.
+  - Đảm bảo các tùy chọn loại trừ lẫn nhau và không trùng lặp
+  - LUÔN bao gồm tùy chọn cho phản hồi tùy chỉnh: "X) Other (please describe after [Answer]: tag below)"
 - Chờ câu trả lời của người dùng trong tài liệu
-- **BẮT BUỘC**: Phân tích TẤT CẢ câu trả lời cho sự mơ hồ và tạo các câu hỏi tiếp theo nếu cần
+- **BẮT BUỘC**: Phân tích TẤT CẢ các câu trả lời cho sự mơ hồ và tạo câu hỏi tiếp theo nếu cần
 - **BẮT BUỘC**: Tiếp tục đặt câu hỏi cho đến khi TẤT CẢ sự mơ hồ được giải quyết HOẶC người dùng yêu cầu rõ ràng để tiếp tục
+
+### ⛔ CỔNG: Chờ Câu trả lời của Người dùng
+
+KHÔNG tiếp tục đến Bước 7 cho đến khi tất cả các câu hỏi trong requirement-verification-questions.md được trả lời và xác thực.
+Trình bày tệp câu hỏi cho người dùng và DỪNG LẠI.
 
 ### Bước 7: Tạo Tài liệu Yêu cầu
 
+- **ĐIỀU KIỆN TIÊN QUYẾT**: Cổng Bước 6 phải được thông qua — tất cả câu trả lời đã nhận và phân tích
 - Tạo `aidlc-docs/inception/requirements/requirements.md`
 - Bao gồm tóm tắt phân tích ý định ở đầu:
   - Yêu cầu người dùng
@@ -143,41 +149,41 @@ Cập nhật `aidlc-docs/aidlc-state.md`:
 
 ### Bước 9: Ghi nhật ký và Tiếp tục
 
-- Ghi nhật ký nhắc nhở phê duyệt với dấu thời gian trong `aidlc-docs/audit.md`
+- Ghi nhật ký lời nhắc phê duyệt với dấu thời gian trong `aidlc-docs/audit.md`
 - Trình bày thông điệp hoàn thành theo cấu trúc này:
-  1.  **Thông báo Hoàn thành** (bắt buộc): Luôn bắt đầu với điều này:
+  1.  **Thông báo Hoàn thành** (bắt buộc): Luôn bắt đầu bằng dòng này:
 
 ```markdown
 # 🔍 Requirements Analysis Complete
 ```
 
-     2. **Tóm tắt AI** (tùy chọn): Cung cấp tóm tắt gạch đầu dòng có cấu trúc về yêu cầu
+     2. **Tóm tắt AI** (tùy chọn): Cung cấp tóm tắt gạch đầu dòng có cấu trúc của các yêu cầu
         - Định dạng: "Requirements analysis has identified [project type/complexity]:"
         - Liệt kê các yêu cầu chức năng chính (gạch đầu dòng)
         - Liệt kê các yêu cầu phi chức năng chính (gạch đầu dòng)
-        - Đề cập đến các cân nhắc kiến trúc hoặc quyết định kỹ thuật nếu có liên quan
-        - KHÔNG bao gồm hướng dẫn quy trình làm việc ("vui lòng xem lại", "cho tôi biết", "tiếp tục giai đoạn tiếp theo", "trước khi chúng ta tiếp tục")
-        - Giữ thực tế và tập trung vào nội dung
-     3. **Thông điệp Quy trình Đã định dạng** (bắt buộc): Luôn kết thúc với định dạng chính xác này:
+        - Đề cập đến các cân nhắc kiến trúc hoặc quyết định kỹ thuật nếu liên quan
+        - KHÔNG bao gồm hướng dẫn quy trình làm việc ("please review", "let me know", "proceed to next phase", "before we proceed")
+        - Giữ tính thực tế và tập trung vào nội dung
+     3. **Thông điệp Quy trình Đã định dạng** (bắt buộc): Luôn kết thúc bằng định dạng chính xác này:
 
 ```markdown
-> **📋 <u>**REVIEW REQUIRED:**</u>**  
+> **📋 <u>**REVIEW required:**</u>**  
 > Please examine the requirements document at: `aidlc-docs/inception/requirements/requirements.md`
 >
-> **🚀 <u>**WHAT'S NEXT?**</u>**
->
-> **You may:**
->
-> 🔧 **Request Changes** - Ask for modifications to the requirements if required based on your review
-> [IF User Stories will be skipped, add this option:]
-> 📝 **Add User Stories** - Choose to Include **User Stories** stage (currently skipped based on project simplicity)  
-> ✅ **Approve & Continue** - Approve requirements and proceed to **[User Stories/Workflow Planning]**
+> > **🚀 <u>**WHAT'S NEXT?**</u>**
+> >
+> > **You may:**
+> >
+> > 🔧 **Request Changes** - Ask for modifications to the requirements if required based on your review
+> > [IF User Stories will be skipped, add this option:]
+> > 📝 **Add User Stories** - Choose to Include **User Stories** stage (currently skipped based on project simplicity)  
+> > ✅ **Approve & Continue** - Approve requirements and proceed to **[User Stories/Workflow Planning]**
 >
 > ---
 ```
 
 **Lưu ý**: Chỉ bao gồm tùy chọn "Add User Stories" khi giai đoạn User Stories sẽ bị bỏ qua. Thay thế [User Stories/Workflow Planning] bằng tên giai đoạn tiếp theo thực tế.
 
-- Chờ phê duyệt rõ ràng của người dùng trước khi tiếp tục
+- Chờ sự phê duyệt rõ ràng của người dùng trước khi tiếp tục
 - Ghi lại phản hồi phê duyệt với dấu thời gian
-- Cập nhật giai đoạn Phân tích Yêu cầu hoàn thành trong aidlc-state.md
+- Cập nhật giai đoạn Phân tích Yêu cầu hoàn tất trong aidlc-state.md

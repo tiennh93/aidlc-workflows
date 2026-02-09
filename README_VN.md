@@ -4,13 +4,15 @@ AI-DLC là một quy trình phát triển phần mềm thông minh thích ứng 
 
 ## Bắt đầu Nhanh
 
-1. Tải xuống tệp zip bản phát hành mới nhất từ [Trang phát hành](../../releases/latest).
+1. Tải xuống tệp zip bản phát hành mới nhất từ [Trang phát hành](../../releases/latest) vào một thư mục **bên ngoài** thư mục dự án của bạn (ví dụ: `~/Downloads`).
 2. Giải nén tệp zip. Nó chứa một thư mục `aidlc-rules/` với hai thư mục con:
    - `aws-aidlc-rules/` — các quy tắc quy trình làm việc AI-DLC cốt lõi
    - `aws-aidlc-rule-details/` — tài liệu hỗ trợ được tham chiếu bởi các quy tắc
 3. Sao chép cả hai thư mục vào dự án của bạn, tuân theo thiết lập cho nền tảng của bạn bên dưới.
 
-### Kiro
+> **Lưu ý**: Thư mục được giải nén có thể chứa một thư mục cấp cao nhất (ví dụ: `aidlc-workflows-0.1.0/`). Hãy điều hướng vào đó trước để `aidlc-rules/` có thể truy cập trực tiếp.
+
+## Kiro
 
 AI-DLC sử dụng [Kiro Steering Files](https://kiro.dev/docs/cli/steering/) trong không gian làm việc dự án của bạn. Sao chép các quy tắc vào thư mục `.kiro` của dự án của bạn:
 
@@ -18,32 +20,53 @@ AI-DLC sử dụng [Kiro Steering Files](https://kiro.dev/docs/cli/steering/) tr
 2. Sao chép `aws-aidlc-rules/` vào `.kiro/steering/`.
 3. Sao chép `aws-aidlc-rule-details/` vào `.kiro/`.
 
+Các lệnh dưới đây giả định bạn đã giải nén tệp zip vào thư mục `Downloads` của mình. Nếu bạn đã sử dụng một vị trí khác, hãy thay thế `Downloads` bằng đường dẫn thư mục thực tế của bạn.
+
 Trên macOS/Linux:
 
 ```bash
 mkdir -p .kiro/steering
-cp -R aidlc-rules/aws-aidlc-rules .kiro/steering/
-cp -R aidlc-rules/aws-aidlc-rule-details .kiro/
+cp -R ~/Downloads/aidlc-rules/aws-aidlc-rules .kiro/steering/
+cp -R ~/Downloads/aidlc-rules/aws-aidlc-rule-details .kiro/
+```
+
+Trên Windows (CMD):
+
+```cmd
+mkdir .kiro\steering
+xcopy %USERPROFILE%\Downloads\aidlc-rules\aws-aidlc-rules .kiro\steering\aws-aidlc-rules\ /E /I
+xcopy %USERPROFILE%\Downloads\aidlc-rules\aws-aidlc-rule-details .kiro\aws-aidlc-rule-details\ /E /I
 ```
 
 Dự án của bạn sẽ trông như sau:
 
 ```
 <project-root>/
-  .kiro/
-    steering/
-      aws-aidlc-rules/
-    aws-aidlc-rule-details/
+    ├── .kiro/
+    │     ├── steering/
+    │     │      ├── aws-aidlc-rules/
+    │     ├── aws-aidlc-rule-details/
 ```
 
 Để xác minh các quy tắc đã được tải:
 
-- **Kiro IDE**: Mở bảng steering files và xác nhận các mục nhập cho `.kiro/steering/aws-aidlc-rules`.
-- **Kiro CLI**: Chạy `kiro-cli`, sau đó `/context show`, và xác nhận các mục nhập cho `.kiro/steering/aws-aidlc-rules`.
+### Kiro IDE
 
-![AI-DLC Rules in Kiro CLI](./assets/images/kiro-cli-aidlc-rules-loaded.png?raw=true 'AI-DLC Rules in Kiro CLI')
+Mở bảng steering files và xác nhận bạn thấy một mục nhập cho `core-workflow` trong phần `Workspace` như hiển thị trong ảnh chụp màn hình bên dưới.
 
-### Amazon Q Developer IDE Plugin/Extension
+<img src="./assets/images/kiro-ide-aidlc-rules-loaded.png?raw=true" alt="AI-DLC Rules in Kiro IDE" width="700" height="450">
+
+Chúng tôi sử dụng Kiro IDE ở chế độ Vibe để chạy quy trình làm việc AI-DLC. Điều này đảm bảo rằng quy trình làm việc AI-DLC hướng dẫn quy trình phát triển trong Kiro. Đôi khi, Kiro có thể nhắc bạn chuyển sang chế độ spec. Chọn `No` cho các lời nhắc như vậy để ở lại chế độ Vibe.
+
+<img src="./assets/images/kiro-sdd-nudge.png" alt="Staying in Kiro Vibe mode" width="500" height="175">
+
+### Kiro CLI
+
+Chạy `kiro-cli`, sau đó `/context show`, và xác nhận các mục nhập cho `.kiro/steering/aws-aidlc-rules`.
+
+<img src="./assets/images/kiro-cli-aidlc-rules-loaded.png?raw=true" alt="AI-DLC Rules in Kiro CLI" width="700" height="660">
+
+## Amazon Q Developer IDE Plugin/Extension
 
 AI-DLC sử dụng [Amazon Q Rules](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/context-project-rules.html) trong không gian làm việc dự án của bạn. Sao chép các quy tắc vào thư mục `.amazonq` của dự án của bạn:
 
@@ -51,22 +74,32 @@ AI-DLC sử dụng [Amazon Q Rules](https://docs.aws.amazon.com/amazonq/latest/q
 2. Sao chép `aws-aidlc-rules/` vào `.amazonq/rules/`.
 3. Sao chép `aws-aidlc-rule-details/` vào `.amazonq/`.
 
+Các lệnh dưới đây giả định bạn đã giải nén tệp zip vào thư mục `Downloads` của mình. Nếu bạn đã sử dụng một vị trí khác, hãy thay thế `Downloads` bằng đường dẫn thư mục thực tế của bạn.
+
 Trên macOS/Linux:
 
 ```bash
 mkdir -p .amazonq/rules
-cp -R aidlc-rules/aws-aidlc-rules .amazonq/rules/
-cp -R aidlc-rules/aws-aidlc-rule-details .amazonq/
+cp -R ~/Downloads/aidlc-rules/aws-aidlc-rules .amazonq/rules/
+cp -R ~/Downloads/aidlc-rules/aws-aidlc-rule-details .amazonq/
+```
+
+Trên Windows (CMD):
+
+```cmd
+mkdir .amazonq\rules
+xcopy %USERPROFILE%\Downloads\aidlc-rules\aws-aidlc-rules .amazonq\rules\aws-aidlc-rules\ /E /I
+xcopy %USERPROFILE%\Downloads\aidlc-rules\aws-aidlc-rule-details .amazonq\aws-aidlc-rule-details\ /E /I
 ```
 
 Dự án của bạn sẽ trông như sau:
 
 ```
 <project-root>/
-  .amazonq/
-    rules/
-      aws-aidlc-rules/
-    aws-aidlc-rule-details/
+    ├── .amazonq/
+    │     ├── rules/
+    │     │     ├── aws-aidlc-rules/
+    │     ├── aws-aidlc-rule-details/
 ```
 
 Để xác minh các quy tắc đã được tải:
@@ -74,7 +107,7 @@ Dự án của bạn sẽ trông như sau:
 1. Trong cửa sổ Amazon Q Chat, nhấp vào nút `Rules` ở góc dưới cùng bên phải.
 2. Xác nhận bạn thấy các mục nhập cho `.amazonq/rules/aws-aidlc-rules`.
 
-![AI-DLC Rules in Q Developer IDE](./assets/images/q-ide-aidlc-rules-loaded.png?raw=true 'AI-DLC Rules in Q Developer')
+<img src="./assets/images/q-ide-aidlc-rules-loaded.png?raw=true" alt="AI-DLC Rules in Q Developer IDE plugin" width="700" height="400">
 
 ### Các Agent Khác
 

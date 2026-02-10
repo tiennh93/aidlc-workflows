@@ -6,14 +6,8 @@ AI-DLC is an intelligent software development workflow that adapts to your needs
 
 - [Tenets](#tenets)
 - [Prerequisites](#prerequisites)
-- [Quick Start](#quick-start)
+- [Get the AIDLC](#get-the-aidlc)
 - [Platform-Specific Setup](#platform-specific-setup)
-  - [Amazon Q Developer IDE Plugin](#amazon-q-developer-ide-pluginextension)
-  - [Kiro CLI](#kiro-cli-formerly-amazon-q-cli)
-  - [Cursor IDE](#cursor-ide)
-  - [Cline](#cline)
-  - [Claude Code](#claude-code)
-  - [GitHub Copilot](#github-copilot)
 - [Usage](#usage)
 - [Three-Phase Adaptive Workflow](#three-phase-adaptive-workflow)
 - [Key Features](#key-features)
@@ -59,13 +53,13 @@ Have one of our supported platforms/tools for Assisted AI Coding installed:
 
 ### From Packaged Zip
 
-1. Download the latest release zip from the [Releases page](../../releases/latest) to a folder **outside** your project directory (e.g., `~/Downloads`).
+1. Download the latest release zip (e.g., `ai-dlc-rules-v1.0.0.zip`) from the [Releases page](../../releases/latest) to a folder **outside** your project directory (e.g., `~/Downloads`).
 2. Extract the zip. It contains an `aidlc-rules/` folder with two subdirectories:
    - `aws-aidlc-rules/` — the core AI-DLC workflow rules
    - `aws-aidlc-rule-details/` — supporting documents referenced by the rules
-3. Copy both folders into your project, following the setup for your platform below.
+3. Note the path to the extracted `aidlc-rules/` folder — you'll need it in the platform-specific setup commands below.
 
-> **Note**: The extracted folder may contain a top-level directory (e.g., `aidlc-workflows-0.1.0/`). Navigate into it first so that `aidlc-rules/` is directly accessible.
+> **Tip**: Download the **release artifact** (named `ai-dlc-rules-vX.X.X.zip`), not the auto-generated "Source code" archive. The release artifact contains `aidlc-rules/` directly, while the source archive wraps everything in an extra directory.
 
 ---
 
@@ -104,6 +98,16 @@ Choose your platform below and follow the setup instructions.
 ---
 
 ## Platform-Specific Setup
+
+  - [Amazon Q Developer IDE Plugin](#amazon-q-developer-ide-pluginextension)
+  - [Kiro CLI](#kiro-cli-formerly-amazon-q-cli)
+  - [Cursor IDE](#cursor-ide)
+  - [Cline](#cline)
+  - [Claude Code](#claude-code)
+  - [GitHub Copilot](#github-copilot)
+
+
+> **ZIP users**: The commands below use `../aidlc-workflows/aidlc-rules` (Unix) and `..\aidlc-workflows\aidlc-rules` (Windows) as the source path, which assumes the **clone** layout. If you downloaded the **ZIP**, replace that path with the location of your extracted `aidlc-rules` folder (e.g., `~/Downloads/aidlc-rules` or `%USERPROFILE%\Downloads\aidlc-rules`).
 
 ---
 

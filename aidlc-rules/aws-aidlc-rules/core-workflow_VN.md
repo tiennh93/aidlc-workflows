@@ -15,7 +15,9 @@ Mô hình AI đánh giá thông minh những giai đoạn nào là cần thiết
 
 ## BẮT BUỘC: Tải Chi tiết Quy tắc
 
-**QUAN TRỌNG**: Khi thực hiện bất kỳ giai đoạn nào, bạn PHẢI đọc và sử dụng nội dung liên quan từ các tệp chi tiết quy tắc trong thư mục `.kiro/aws-aidlc-rule-details/` hoặc `.amazonq/aws-aidlc-rule-details/`.
+**QUAN TRỌNG**: Khi thực hiện bất kỳ giai đoạn nào, bạn PHẢI đọc và sử dụng nội dung liên quan từ các tệp chi tiết quy tắc trong thư mục `.aidlc-rule-details/`.
+
+Thư mục này được sử dụng nhất quán trên tất cả các nền tảng (Cline, Kiro CLI, Amazon Q, Cursor).
 
 **Quy tắc Chung**: LUÔN tải các quy tắc chung khi bắt đầu quy trình làm việc:
 
@@ -51,7 +53,7 @@ Mô hình AI đánh giá thông minh những giai đoạn nào là cần thiết
 
 **Cách Hiển thị Thông điệp Chào mừng**:
 
-1. Tải thông điệp chào mừng từ `.kiro/aws-aidlc-rule-details/common/welcome-message.md` hoặc `.amazonq/aws-aidlc-rule-details/common/welcome-message.md`
+1. Tải thông điệp chào mừng từ `.aidlc-rule-details/common/welcome-message.md`
 2. Hiển thị thông điệp hoàn chỉnh cho người dùng
 3. Điều này chỉ nên được thực hiện MỘT LẦN khi bắt đầu một quy trình làm việc mới
 4. KHÔNG tải tệp này trong các tương tác tiếp theo để tiết kiệm không gian ngữ cảnh

@@ -2,6 +2,22 @@
 
 Mọi thay đổi đáng chú ý của dự án này sẽ được ghi lại trong tệp tin này.
 
+## [0.1.5] - 2026-02-24
+
+### Tài liệu
+
+- cập nhật nhật ký thay đổi cho v0.1.4 (#88)
+
+## [0.1.4] - 2026-02-24
+
+### Sửa lỗi
+
+- sửa hướng dẫn GitHub Copilot và giải quyết đường dẫn chi tiết quy tắc cho Kiro CLI (#82, #84) (#87)
+
+### Tài liệu
+
+- cập nhật nhật ký thay đổi cho v0.1.3 (#77)
+
 ## [0.1.3] - 2026-02-11
 
 ### Sửa lỗi

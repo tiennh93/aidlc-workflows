@@ -101,6 +101,18 @@ Phân tích bất cứ điều gì người dùng đã cung cấp:
 
 **Khi nghi ngờ, hãy đặt câu hỏi** - yêu cầu không đầy đủ dẫn đến việc triển khai kém.
 
+### Bước 5.1: Các Câu hỏi về Khả năng Áp dụng Extension
+
+**BẮT BUỘC**: Quét tất cả các tệp extension đã tải để tìm phần `## Applicability Question`. Đối với mỗi extension khai báo phần này, hãy đưa câu hỏi đó vào tệp câu hỏi làm rõ được tạo ở Bước 6. Sau khi nhận được câu trả lời, ghi lại trạng thái kích hoạt của từng extension trong `aidlc-docs/aidlc-state.md` dưới phần `## Extension Configuration`:
+
+```markdown
+## Extension Configuration
+
+| Extension        | Enabled  | Decided At            |
+| ---------------- | -------- | --------------------- |
+| [Extension Name] | [Yes/No] | Requirements Analysis |
+```
+
 ### Bước 6: Tạo Câu hỏi Làm rõ (CÁCH TIẾP CẬN CHỦ ĐỘNG)
 
 - **LUÔN LUÔN** tạo `aidlc-docs/inception/requirements/requirement-verification-questions.md` trừ khi các yêu cầu đặc biệt rõ ràng và đầy đủ

@@ -506,6 +506,16 @@ Hỗ trợ 4 loại thay đổi giữa workflow:
 3. **Restart giai đoạn hiện tại** → Archive artifacts cũ, chạy lại
 4. **Restart giai đoạn trước** → Cascade reset tất cả giai đoạn phụ thuộc
 
+### 8.7. Security Baseline (Bảo mật cơ sở)
+
+> **Nguồn**: [aidlc-rules/aws-aidlc-rule-details/extensions/security/baseline/security-baseline.md](aidlc-rules/aws-aidlc-rule-details/extensions/security/baseline/security-baseline.md)
+
+Các quy tắc bảo mật bắt buộc (MANDATORY constraints) áp dụng xuyên suốt tất cả các pha. Bao gồm:
+
+- **Enforcement**: Phải kiểm tra tuân thủ các quy tắc bảo mật trước khi hoàn thành và chuyển giao mỗi giai đoạn.
+- **Blocking**: Bất kỳ vi phạm nào cũng sẽ chặn (block) tiến trình và yêu cầu phải chỉnh sửa (Request Changes).
+- **Phạm vi bảo mật**: Áp dụng các quy tắc về mã hóa (Encryption), quản lý truy cập (Access Control), xác thực API (Validation) và logging tuân theo chuẩn OWASP Top 10.
+
 ---
 
 ## 9. Cấu trúc thư mục đầu ra
@@ -672,6 +682,12 @@ Bảng dưới đây liệt kê tất cả file rule và mục đích cụ thể
 | File                                                                                    | Mục đích                                          |
 | --------------------------------------------------------------------------------------- | ------------------------------------------------- |
 | [operations/operations.md](aidlc-rules/aws-aidlc-rule-details/operations/operations.md) | Placeholder cho deployment & monitoring tương lai |
+
+### Extensions (Tiện ích mở rộng)
+
+| File                                                                                                                                      | Mục đích                                                                          |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [extensions/security/baseline/security-baseline.md](aidlc-rules/aws-aidlc-rule-details/extensions/security/baseline/security-baseline.md) | Tập hợp các quy tắc bảo mật (Security Rules) bắt buộc áp dụng xuyên suốt các pha. |
 
 ---
 

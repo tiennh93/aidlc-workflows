@@ -119,6 +119,7 @@ Nếu phân tích ở bước 8 tiết lộ BẤT KỲ câu trả lời mơ hồ
   - Ma trận phụ thuộc hiển thị các mối quan hệ
   - Mẫu giao tiếp giữa các thành phần
   - Biểu đồ luồng dữ liệu
+- Tạo `aidlc-docs/inception/application-design/application-design.md` để hợp nhất các tài liệu thiết kế đã tạo ở trên thành một tài liệu duy nhất.
 
 ### 11. Ghi nhật ký Phê duyệt
 

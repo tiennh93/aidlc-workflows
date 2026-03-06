@@ -2,6 +2,25 @@
 
 Mọi thay đổi đáng chú ý của dự án này sẽ được ghi lại trong tệp tin này.
 
+## [0.1.6] - 2026-03-05
+
+### Sửa lỗi
+
+- sửa lỗi cache và tải về của codebuild (#93)
+- sửa lỗi copy-paste trong error-handling.md (#96)
+
+### Tài liệu
+
+- cập nhật nhật ký thay đổi cho v0.1.5
+
+### Tính năng
+
+- thêm quy trình làm việc CodeBuild (#92)
+
+### Khác
+
+- thêm mẫu cho các issue trên github (#97)
+
 ## [0.1.5] - 2026-02-24
 
 ### Tài liệu

@@ -302,6 +302,7 @@ Pha Construction hoạt động theo cơ chế **vòng lặp per-unit**: mỗi u
 - `business-logic-model.md`
 - `business-rules.md`
 - `domain-entities.md`
+- `frontend-components.md` (nếu đơn vị bao gồm UI/Frontend)
 
 ### 5.2. NFR Requirements (CÓ ĐIỀU KIỆN, per-unit)
 
@@ -380,6 +381,8 @@ Pha Construction hoạt động theo cơ chế **vòng lặp per-unit**: mỗi u
 | Greenfield single unit | `src/`, `tests/`, `config/` |
 | Greenfield multi-unit (microservices) | `{unit-name}/src/`, `{unit-name}/tests/` |
 | Greenfield multi-unit (monolith) | `src/{unit-name}/`, `tests/{unit-name}/` |
+
+**Lưu ý bổ sung**: Tự động sinh thêm thuộc tính `data-testid` cho mã frontend UI để thân thiện với automation test.
 
 ### 5.6. Build and Test (LUÔN CHẠY)
 
@@ -558,7 +561,7 @@ Các quy tắc bảo mật bắt buộc (MANDATORY constraints) áp dụng xuyê
 
 ## 10. Cách triển khai AI-DLC vào dự án
 
-> **Nguồn**: [README.md](README.md) — phần "Quick Start"
+> **Nguồn**: [README_VN.md](README_VN.md) — phần "Cài đặt theo Nền tảng"
 
 ### Bước 1: Tải rules
 
@@ -566,45 +569,20 @@ Tải release mới nhất từ [Releases page](../../releases/latest) và giả
 
 ### Bước 2: Copy rules vào dự án
 
-#### Với Kiro IDE/CLI
+Tùy thuộc vào IDE và AI agent bạn đang sử dụng, vị trí copy các quy tắc sẽ khác nhau. AI-DLC hỗ trợ cài đặt thống nhất trên các nền tảng:
 
-```bash
-mkdir -p .kiro/steering
-cp -R aidlc-rules/aws-aidlc-rules .kiro/steering/
-cp -R aidlc-rules/aws-aidlc-rule-details .kiro/
-```
+- **Kiro CLI & IDE**
+- **Amazon Q Developer IDE Plugin**
+- **Cursor IDE**
+- **Cline**
+- **Claude Code**
+- **GitHub Copilot**
 
-Cấu trúc mong đợi:
+> **Chi tiết lệnh cài đặt**: Vui lòng tham khảo chi tiết lệnh cài đặt cho từng môi trường (macOS/Linux/Windows) tại phần **"Cài đặt theo Nền tảng"** trong [README.md](README.md) hoặc [README_VN.md](README_VN.md).
 
-```
-<project-root>/
-  .kiro/
-    steering/
-      aws-aidlc-rules/        # ← core-workflow.md ở đây
-    aws-aidlc-rule-details/    # ← rule details ở đây
-```
+#### Nguyên tắc chung với các agent khác
 
-#### Với Amazon Q Developer IDE
-
-```bash
-mkdir -p .amazonq/rules
-cp -R aidlc-rules/aws-aidlc-rules .amazonq/rules/
-cp -R aidlc-rules/aws-aidlc-rule-details .amazonq/
-```
-
-Cấu trúc mong đợi:
-
-```
-<project-root>/
-  .amazonq/
-    rules/
-      aws-aidlc-rules/
-    aws-aidlc-rule-details/
-```
-
-#### Với agent khác
-
-Đặt `aws-aidlc-rules/` vào nơi agent đọc project rules, và `aws-aidlc-rule-details/` ở cấp sibling.
+Đặt `aws-aidlc-rules/` vào nơi agent đọc project rules (thường là cấu hình workspace prompt), và đặt `aws-aidlc-rule-details/` ở cùng cấp độ thư mục (sibling) để quy tắc chính có thể tham chiếu.
 
 ### Bước 3: Bắt đầu sử dụng
 

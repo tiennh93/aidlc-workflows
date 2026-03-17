@@ -1,5 +1,8 @@
 # AI-DLC (Vòng đời Phát triển Dựa trên AI)
 
+> [!IMPORTANT]
+> AI tạo sinh có thể mắc sai lầm. Bạn nên xem xét lại toàn bộ kết quả đầu ra và chi phí được tạo ra bởi mô hình AI và trợ lý lập trình mà bạn đã chọn. Xem [Chính sách Trách nhiệm AI của AWS](https://aws.amazon.com/ai/responsible-ai/policy/).
+
 AI-DLC là một quy trình phát triển phần mềm thông minh thích ứng với nhu cầu của bạn, duy trì các tiêu chuẩn chất lượng và giữ cho bạn quyền kiểm soát quy trình. Để tìm hiểu thêm về Phương pháp luận AI-DLC, hãy đọc [bài đăng trên blog](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) này và [Tài liệu Định nghĩa Phương pháp](https://prod.d13rzhkk8cj2z0.amplifyapp.com/) được tham chiếu trong đó.
 
 ## Mục lục
@@ -542,7 +545,7 @@ AI-DLC hỗ trợ hệ thống phần mở rộng cho phép bạn thêm các quy
 
 Các phần mở rộng được phân loại theo nhóm (ví dụ: `security/`, `scalability/`, `accessibility/`). Mỗi nhóm có thể chứa các quy tắc riêng và bất kỳ số lượng thư mục con nào bạn xác định.
 
-Mỗi phần mở rộng nên bao gồm một **Câu hỏi Khả năng áp dụng (Applicability Question)** — một câu hỏi trắc nghiệm có cấu trúc mà AI-DLC tự động hiển thị trong giai đoạn Phân tích Yêu cầu. Điều này cho phép người dùng quyết định xem có kích hoạt hay bỏ qua phần mở rộng đó cho dự án hiện tại hay không. Ví dụ, phần mở rộng bảo mật có sẵn bao gồm:
+Mỗi phần mở rộng nên bao gồm một **Lời nhắc Tùy chọn tham gia (Opt-In Prompt)** — một câu hỏi trắc nghiệm có cấu trúc mà AI-DLC tự động hiển thị trong giai đoạn Phân tích Yêu cầu. Điều này cho phép người dùng quyết định xem có kích hoạt hay bỏ qua phần mở rộng đó cho dự án hiện tại hay không. Ví dụ, phần mở rộng bảo mật có sẵn bao gồm:
 
 ```markdown
 ## Question: Security Extensions
@@ -556,11 +559,11 @@ X) Other (please describe)
 [Answer]:
 ```
 
-Khi bạn tạo các phần mở rộng của riêng mình, hãy bao gồm một câu hỏi khả năng áp dụng tương tự để người dùng có thể chọn tham gia hoặc không tham gia trên từng dự án.
+Khi bạn tạo các phần mở rộng của riêng mình, hãy bao gồm một lời nhắc tùy chọn tham gia tương tự để người dùng có thể chọn tham gia hoặc không tham gia trên từng dự án.
 
 Dưới đây là luồng hoạt động chung sau khi một phần mở rộng được kích hoạt:
 
-1. Trong giai đoạn Khởi tạo (Inception), AI-DLC hiển thị câu hỏi khả năng áp dụng của phần mở rộng.
+1. Trong giai đoạn Khởi tạo (Inception), AI-DLC hiển thị lời nhắc tùy chọn tham gia của phần mở rộng.
 2. Nếu được kích hoạt, các quy tắc của phần mở rộng được tải dưới dạng các ràng buộc bắt buộc áp dụng trên tất cả các giai đoạn của AI-DLC.
 3. Ở mỗi giai đoạn, AI model sẽ xác minh việc tuân thủ tất cả các quy tắc mở rộng đã tải trước khi cho phép tiến hành giai đoạn đó.
 

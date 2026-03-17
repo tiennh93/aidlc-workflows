@@ -205,6 +205,7 @@ Pha Inception gồm **7 giai đoạn**, trong đó 3 giai đoạn luôn chạy v
 3. Xác định mức độ sâu
 4. Đánh giá yêu cầu hiện tại
 5. Phân tích tính đầy đủ
+   - *5.1. Xử lý Lời nhắc tùy chọn tham gia (Opt-In Prompts) cho Extensions và cấu hình nạp trì hoãn.*
 6. Tạo câu hỏi làm rõ → file `requirement-verification-questions.md`
 7. Tạo tài liệu yêu cầu → `requirements.md`
 8. Cập nhật trạng thái
@@ -509,15 +510,17 @@ Hỗ trợ 4 loại thay đổi giữa workflow:
 3. **Restart giai đoạn hiện tại** → Archive artifacts cũ, chạy lại
 4. **Restart giai đoạn trước** → Cascade reset tất cả giai đoạn phụ thuộc
 
-### 8.7. Security Baseline (Bảo mật cơ sở)
+### 8.7. Tiện ích mở rộng (Extensions) & Cơ chế Tải Trì hoãn
 
-> **Nguồn**: [aidlc-rules/aws-aidlc-rule-details/extensions/security/baseline/security-baseline.md](aidlc-rules/aws-aidlc-rule-details/extensions/security/baseline/security-baseline.md)
+> **Nguồn**: Các thư mục con bên trong `extensions/` (ví dụ: `extensions/security/baseline/`)
 
-Các quy tắc bảo mật bắt buộc (MANDATORY constraints) áp dụng xuyên suốt tất cả các pha. Bao gồm:
+Hệ thống hỗ trợ nạp các quy tắc bổ sung dưới dạng extension một cách tối ưu ngữ cảnh:
 
-- **Enforcement**: Phải kiểm tra tuân thủ các quy tắc bảo mật trước khi hoàn thành và chuyển giao mỗi giai đoạn.
-- **Blocking**: Bất kỳ vi phạm nào cũng sẽ chặn (block) tiến trình và yêu cầu phải chỉnh sửa (Request Changes).
-- **Phạm vi bảo mật**: Áp dụng các quy tắc về mã hóa (Encryption), quản lý truy cập (Access Control), xác thực API (Validation) và logging tuân theo chuẩn OWASP Top 10.
+- **Tải Quy tắc Trì hoãn (Deferred Rule Loading)**: Ban đầu hệ thống chỉ quét và tải các fileù nhận diện tùy chọn tham gia (`*.opt-in.md`) hạng nhẹ. File quy tắc đầy đủ chỉ được tải bổ sung nếu người dùng đồng ý tham gia (Opt-In) tại pha *Phân tích Yêu cầu*.
+- **Security Baseline (Bảo mật cơ sở)**: Là bộ extension có sẵn. Nếu kích hoạt, các quy tắc này trở thành ràng buộc bắt buộc (MANDATORY constraints):
+  - **Enforcement**: Phải kiểm tra tuân thủ trước khi hoàn thành mỗi giai đoạn.
+  - **Blocking**: Bất kỳ vi phạm nào cũng sẽ chặn (block) tiến trình và yêu cầu phải chỉnh sửa.
+  - **Phạm vi bảo mật**: Áp dụng các chuẩn OWASP Top 10 về mã hóa, quản lý truy cập, xác thực và logging.
 
 ---
 
@@ -665,7 +668,8 @@ Bảng dưới đây liệt kê tất cả file rule và mục đích cụ thể
 
 | File                                                                                                                                      | Mục đích                                                                          |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| [extensions/security/baseline/security-baseline.md](aidlc-rules/aws-aidlc-rule-details/extensions/security/baseline/security-baseline.md) | Tập hợp các quy tắc bảo mật (Security Rules) bắt buộc áp dụng xuyên suốt các pha. |
+| [extensions/security/baseline/security-baseline.opt-in.md](aidlc-rules/aws-aidlc-rule-details/extensions/security/baseline/security-baseline.opt-in.md) | File hạng nhẹ chứa Lời nhắc tùy chọn tham gia (Opt-In Prompt) để hỏi ý kiến người dùng. |
+| [extensions/security/baseline/security-baseline.md](aidlc-rules/aws-aidlc-rule-details/extensions/security/baseline/security-baseline.md) | Tập hợp các quy tắc bảo mật chi tiết, được tải trì hoãn sau khi người dùng chọn IN. |
 
 ---
 

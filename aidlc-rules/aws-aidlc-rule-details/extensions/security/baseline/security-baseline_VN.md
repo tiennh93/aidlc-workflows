@@ -27,24 +27,6 @@ Các mục xác minh trong tài liệu này là các gạch đầu dòng dạng 
 
 ---
 
-## Câu hỏi về Khả năng Áp dụng (Applicability Question)
-
-Câu hỏi sau đây sẽ tự động được đưa vào danh sách các Câu hỏi Làm rõ của phần Phân tích Yêu cầu khi extension này được nạp:
-
-```markdown
-## Câu hỏi: Các Extension Bảo mật
-
-Có nên thực thi các quy tắc extension bảo mật cho dự án này không?
-
-A) Có — thực thi tất cả các quy tắc SECURITY dưới dạng ràng buộc ngăn chặn (khuyến nghị cho các ứng dụng cấp production)
-B) Không — bỏ qua tất cả các quy tắc SECURITY (phù hợp cho các PoC, nguyên mẫu, và các dự án thử nghiệm)
-X) Khác (vui lòng mô tả sau thẻ [Answer]: bên dưới)
-
-[Answer]:
-```
-
----
-
 ## Quy tắc SECURITY-01: Mã hóa Trạng thái Nghỉ (Encryption at Rest) và Mã hóa Đang truyền (Encryption in Transit)
 
 **Quy tắc**: Mọi kho lưu trữ dữ liệu bền bỉ (cơ sở dữ liệu, object storage, file systems, caches, hoặc bất kỳ hệ thống tương đương nào) ĐỀU PHẢI có:

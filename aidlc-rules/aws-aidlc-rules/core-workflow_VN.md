@@ -31,17 +31,24 @@ Tất cả các tham chiếu tệp chi tiết quy tắc tiếp theo (ví dụ: `
 - Tải `common/question-format-guide.md` cho các quy tắc định dạng câu hỏi
 - Tham chiếu những điều này trong suốt quá trình thực thi quy trình làm việc
 
-## BẮT BUỘC: Tải Extensions
+## BẮT BUỘC: Tải Extensions (Tối ưu Ngữ cảnh)
 
-**QUAN TRỌNG**: Khi bắt đầu quy trình làm việc, hãy quét đệ quy thư mục `extensions/` để tìm tất cả các tệp `.md`. Đây là các tệp quy tắc extension áp dụng dưới dạng các ràng buộc xuyên suốt toàn bộ quy trình làm việc.
+**QUAN TRỌNG**: Khi bắt đầu quy trình làm việc, hãy quét đệ quy thư mục `extensions/` nhưng CHỈ tải các tệp chọn tham gia (opt-in) hạng nhẹ — KHÔNG tải toàn bộ các tệp quy tắc. Các tệp quy tắc đầy đủ được tải theo yêu cầu sau khi người dùng chọn tham gia.
 
 **Quá trình tải**:
 
 1. Liệt kê tất cả các thư mục con trong `extensions/` (ví dụ: `extensions/security/`, `extensions/compliance/`)
-2. Tải mọi tệp `.md` được tìm thấy trong các thư mục con đó
-3. Mỗi tệp extension định nghĩa các tiêu chí xác thực và quy tắc thực thi riêng biệt làm các ràng buộc xuyên suốt
+2. Tại mỗi thư mục con, CHỈ tải các tệp `*.opt-in.md` — đây là các tệp chứa lời nhắc tùy chọn tham gia của extension. Tệp quy tắc tương ứng được suy ra theo quy ước: bỏ đuôi `.opt-in.md` và thêm `.md` (ví dụ: `security-baseline.opt-in.md` -> `security-baseline.md`)
+3. KHÔNG tải các tệp quy tắc đầy đủ (ví dụ: `security-baseline.md`) ở giai đoạn này
 
-**Thực thi**:
+**Tải Quy tắc Trì hoãn (Deferred Rule Loading)**:
+
+- Trong quá trình Phân tích Yêu cầu, các lời nhắc tùy chọn tham gia từ các tệp `*.opt-in.md` đã tải sẽ được trình bày cho người dùng
+- Khi người dùng chọn IN cho một extension, hãy tải tệp quy tắc tương ứng (được suy ra theo quy ước đặt tên) ở ngay thời điểm đó
+- Khi người dùng chọn OUT, tệp quy tắc đầy đủ sẽ không bao giờ được tải — giúp tiết kiệm bộ nhớ ngữ cảnh
+- Các extension không có tệp `*.opt-in.md` tương ứng sẽ luôn được thực thi — hãy tải tệp quy tắc của chúng ngay khi bắt đầu quy trình làm việc
+
+**Thực thi** (chỉ áp dụng cho các extension đã tải/được kích hoạt):
 
 - Các quy tắc extension là ràng buộc cứng, không phải hướng dẫn tùy chọn
 - Tại mỗi giai đoạn, mô hình đánh giá một cách thông minh các quy tắc extension nào được áp dụng dựa trên mục đích của giai đoạn, các artifact đang được tạo ra và ngữ cảnh của công việc — chỉ thực thi những quy tắc có liên quan
@@ -49,7 +56,7 @@ Tất cả các tham chiếu tệp chi tiết quy tắc tiếp theo (ví dụ: `
 - Việc không tuân thủ bất kỳ quy tắc extension nào được kích hoạt đang áp dụng là một **phát hiện ngăn chặn (blocking finding)** — KHÔNG trình bày việc hoàn thành giai đoạn cho đến khi được giải quyết
 - Khi trình bày hoàn thành giai đoạn, bao gồm một bản tóm tắt về việc tuân thủ quy tắc extension (tuân thủ/không tuân thủ/N/A cho mỗi quy tắc, cùng với lý do ngắn gọn cho các quyết định N/A)
 
-**Thực thi Có điều kiện (Conditional Enforcement)**: Các extension có thể được kích hoạt/vô hiệu hóa một cách có điều kiện. Xem `inception/requirements-analysis.md` để biết cơ chế thu thập. Trước khi thực thi bất kỳ extension nào ở BẤT KỲ giai đoạn nào, hãy kiểm tra trạng thái `Enabled` của nó trong `aidlc-docs/aidlc-state.md` dưới phần `## Extension Configuration`. Bỏ qua các extension đã bị vô hiệu hóa và ghi lại việc bỏ qua đó trong audit.md. Mặc định là thực thi nếu không có cấu hình nào tồn tại. Các extension không có `## Applicability Question` luôn được thực thi.
+**Thực thi Có điều kiện (Conditional Enforcement)**: Các extension có thể được kích hoạt/vô hiệu hóa một cách có điều kiện. Xem `inception/requirements-analysis.md` để biết cơ chế tùy chọn tham gia. Trước khi thực thi bất kỳ extension nào ở BẤT KỲ giai đoạn nào, hãy kiểm tra trạng thái `Enabled` của nó trong `aidlc-docs/aidlc-state.md` dưới phần `## Extension Configuration`. Bỏ qua các extension đã bị vô hiệu hóa và ghi lại việc bỏ qua đó trong audit.md. Mặc định là thực thi nếu không có cấu hình nào tồn tại. Các extension không có phần `## Opt-In Prompt` luôn được thực thi.
 
 ## BẮT BUỘC: Xác thực Nội dung
 

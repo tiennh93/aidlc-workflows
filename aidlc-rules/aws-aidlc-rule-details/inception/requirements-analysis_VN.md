@@ -101,9 +101,12 @@ Phân tích bất cứ điều gì người dùng đã cung cấp:
 
 **Khi nghi ngờ, hãy đặt câu hỏi** - yêu cầu không đầy đủ dẫn đến việc triển khai kém.
 
-### Bước 5.1: Các Câu hỏi về Khả năng Áp dụng Extension
+### Bước 5.1: Các Lời nhắc Tùy chọn tham gia Extension
 
-**BẮT BUỘC**: Quét tất cả các tệp extension đã tải để tìm phần `## Applicability Question`. Đối với mỗi extension khai báo phần này, hãy đưa câu hỏi đó vào tệp câu hỏi làm rõ được tạo ở Bước 6. Sau khi nhận được câu trả lời, ghi lại trạng thái kích hoạt của từng extension trong `aidlc-docs/aidlc-state.md` dưới phần `## Extension Configuration`:
+**BẮT BUỘC**: Quét tất cả các tệp `*.opt-in.md` đã tải (được tải lúc bắt đầu quy trình làm việc từ các thư mục con `extensions/`) để tìm phần `## Opt-In Prompt`. Đối với mỗi extension khai báo phần này, hãy đưa câu hỏi đó vào tệp câu hỏi làm rõ được tạo ở Bước 6.
+
+Sau khi nhận được câu trả lời:
+1. Ghi lại trạng thái kích hoạt của từng extension trong `aidlc-docs/aidlc-state.md` dưới phần `## Extension Configuration`:
 
 ```markdown
 ## Extension Configuration
@@ -112,6 +115,8 @@ Phân tích bất cứ điều gì người dùng đã cung cấp:
 | ---------------- | -------- | --------------------- |
 | [Extension Name] | [Yes/No] | Requirements Analysis |
 ```
+
+2. **Tải Quy tắc Trì hoãn (Deferred Rule Loading)**: Đối với mỗi extension mà người dùng đã chọn tham gia (opted IN), hãy tải toàn bộ tệp quy tắc ngay bây giờ. Tệp quy tắc được suy ra dựa trên quy ước đặt tên: bỏ `.opt-in.md` từ tên tệp tùy chọn tham gia và thêm `.md` (ví dụ: `security-baseline.opt-in.md` -> `security-baseline.md`). Đối với các extension mà người dùng chọn KHÔNG tham gia (opted OUT), KHÔNG tải toàn bộ tệp quy tắc.
 
 ### Bước 6: Tạo Câu hỏi Làm rõ (CÁCH TIẾP CẬN CHỦ ĐỘNG)
 

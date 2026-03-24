@@ -571,6 +571,9 @@ Dưới đây là luồng hoạt động chung sau khi một phần mở rộng 
 
 Quy trình làm việc hiện được cung cấp kèm theo một phần mở rộng bảo mật cơ bản.
 
+> [!IMPORTANT]
+> Các quy tắc mở rộng bảo mật được cung cấp như một tài liệu tham khảo định hướng để xây dựng các quy tắc bảo mật hiệu quả trong quy trình làm việc AI-DLC. Mỗi tổ chức nên xây dựng, tùy chỉnh và kiểm thử kỹ lưỡng các quy tắc bảo mật của riêng mình trước khi triển khai vào các quy trình làm việc trên môi trường sản xuất.
+
 ```text
 aws-aidlc-rule-details/
 └── extensions/
